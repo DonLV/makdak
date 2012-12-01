@@ -259,7 +259,7 @@ function Idle 					() {
 	if ( moveSpeed <= speedIdleMax && !isCrouching )								// check that speed is 0 for idle range
 	{
 		animation.CrossFade ( aniIdle_1.name );										
-		Message ( "Ani State: Idle" );												
+											
 	}	
 }
 function Walk 					() {												
@@ -268,7 +268,7 @@ function Walk 					() {
 		if ( moveSpeed > speedIdleMax && moveSpeed < speedJog )						
 		{
 			animation.CrossFade ( aniWalk.name );									
-			Message ( "Ani State: Walk" );											
+										
 		}
 	}
 }
@@ -278,7 +278,7 @@ function Jog	 				() {
 		if ( moveSpeed > speedWalk)					 	
 		{
 			animation.CrossFade ( aniJog.name );									
-			Message ( "Ani State: Jog" );											
+											
 		}
 	}
 }
@@ -288,7 +288,7 @@ function Run 					() {
 		if ( moveSpeed > speedJog)						
 		{
 			animation.CrossFade ( aniRun.name );									
-			Message ( "Ani State: Run" );											
+											
 		}
 	}
 }
@@ -298,7 +298,7 @@ function Sprint 				() {
 		if ( moveSpeed > speedRun && moveSpeed <= speedSprint && Input.GetButton ("Fire1") )
 		{
 			animation.CrossFade ( aniSprint.name );									
-			Message ( "Ani State: Sprint" );	
+	
 		}	
 	}
 }
@@ -308,7 +308,7 @@ function Boost 					() {
 	if ( moveSpeed > speedJog && moveSpeed < speedSprint && Input.GetKey ( "g" ))
 	{
 	moveSpeed = speedBoost;
-	Message ("Player Boosting");
+
 	}
 	}
 } 
@@ -329,11 +329,11 @@ function Jump_1 				() {
 				animation.CrossFade ( aniJump_1.name );								
 				currentJumpHeight = jump_1;											
 				inAirVelocity.y = currentJumpHeight;								
-				Message ( "Ani State: Jump 1" );									
+									
 			}	
 			else if ( IsGrounded () && !isJumping_1 && !isJumping_2 && !isJumping_3 )	
 			{
-				Message ( "Combo 2 ready to go!" );									
+								
 				yield;
 				isJumping_1 = false;												
 				isJumping_2 = true;													
@@ -358,7 +358,7 @@ function Jump_2					() {
 			animation.CrossFade (aniJump_2.name);
 			currentJumpHeight = jump_2;
 			inAirVelocity.y = currentJumpHeight;
-			Message ("Ani State: Jump 2 - combo");
+
 			isJumping_3 = true; 
 			}			
 			if(!isJumping_1 && isJumping_2 && !isJumping_3 && Time.time > (curTime + jumpComboTime))
@@ -366,7 +366,7 @@ function Jump_2					() {
 			isJumping_2 = false;
 			isJumping_1 = true;
 			curTime = Time.time;
-			Message("Ani State: Missed Combo 2, reseting to Jump 1");
+
 			}
 		}
 	}
@@ -389,14 +389,14 @@ if(canJumpAll)
 		animation.CrossFade (aniJump_3.name);
 		currentJumpHeight = jump_3;
 		inAirVelocity.y = currentJumpHeight;
-		Message ("Ani State: Jump 3 - combo");
+
 		}			
 		if(!isJumping_1 && !isJumping_2 && isJumping_3 && Time.time > (curTime + jumpComboTime))
 			{
 		isJumping_3 = false;
 		isJumping_1 = true;
 		curTime = Time.time;
-		Message("Ani State: Missed Combo 3, reseting to Jump 1");
+
 		
 		}
 	}
@@ -444,7 +444,7 @@ function Attack					() {
 	{
 	if(colliderAttack == null)
 	{
-		Message("Need colliderAttack assignet");
+
 		return;
 	} 
 	if(ControllerColliderAttack.isAttacking)
@@ -452,7 +452,7 @@ function Attack					() {
 	ControllerColliderAttack.isAttacking = false;
 	inAirVelocity.y = 10;
 	animation.Play (aniJump_2.name);
-	Message ("Player Attacked and Kill Enemy");
+
 	
 	}
 	}
@@ -460,7 +460,7 @@ function Attack					() {
 function Hurt					() {												
 	if(colliderHurt == null)
 	{
-	Message ("Need collider hurt assigned");
+
 	return;
 	}
 	if( ControllerColliderHurt.enemyHit)
@@ -473,9 +473,9 @@ function Hurt					() {
 	if(health <=0)
 	{
 	isKilled = true;
-	Message ("Player was killed, startiong over");
+
 	}
-	Message ("Player was hurt"); 
+
 	}
 	}
 
@@ -493,7 +493,7 @@ function Killzone				() {
 			moveDirection = Vector3(0,0,.1);										// set player move speed to almost zero (when he comes back in we want him stopped)- almost zero throws error in update
 			yield WaitForSeconds (1);												
 			animation.Play ( aniIdle_1.name );										
-			Message ( "Ani State: Idle" );											
+											
 			isJumping_1 = true;														// reset jumping(498,499)
 			isJumping_2 = false;													
 			isJumping_3 = false;													
@@ -547,13 +547,13 @@ function OnTriggerEnter ( other : Collider ) {
 	{
 	coin += 1;
 	Destroy (other.gameObject);
-	Message ("You have collected" +coin + " coins");
+;
 	}
 	if(other.tag == "key")
 	{
 	key += 1;
 	Destroy (other.gameObject);
-	Message ("You have collected" +key + " keys");
+
 	}
 	if(other.tag == "killzone")
 	{
