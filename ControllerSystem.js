@@ -55,21 +55,17 @@ var jump_2							: float				= 10.0;
 var jump_3							: float				= 15.0;						
 
 var jumpFromAir 					: float 			= 15.0;
-var jumpFromCrouch					: float 			= 14.0;						
-var jumpFromObject					: float 			= 8.0;						
-var jumpFromObjectTag 				: String 			= "wall";					
-
+					
 var jumpComboTime					: float 			= 1.5;						
 var jumpDelayTime 					: float 			= 0.5;						
 
 var crouchControllerHeight  		: float 			= 1.0;						
 var crouchControllerCenterY 		: float 			= 0.5;						 
 
-var slideTag 						: String			= "slide";					
+			
 var slideThreshold 					: float 			= 0.88;						
 var slideControllableSpeed 			: float 			= 5.0;						
-
-var pushPower 						: float 			= 0.5;						
+						
 var pushLayers  					: LayerMask 		= -1;						
 
 var gravity							: float				= 20.0;						 
@@ -80,21 +76,12 @@ var aniIdle_2						: AnimationClip;
 var aniWalk 						: AnimationClip;								
 var aniJog 							: AnimationClip;								
 var aniRun 							: AnimationClip;								
-var aniSprint 						: AnimationClip;								
-var aniCrouchIdle					: AnimationClip;								
+var aniSprint 						: AnimationClip;																
 var aniLeanLeft						: AnimationClip;								
-var aniLeanRight					: AnimationClip;								
-var aniJumpFromCrouch				: AnimationClip;								
-var aniJumpFromObject				: AnimationClip;								
+var aniLeanRight					: AnimationClip;																								
 var aniJump_1 						: AnimationClip;								
 var aniJump_2 						: AnimationClip;								
-var aniJump_3 						: AnimationClip;								
-var aniJumpFall						: AnimationClip;								
-var aniJumpLand						: AnimationClip;								
-var aniSlide 						: AnimationClip;								
-var aniGrab		 					: AnimationClip;								
-var aniGrabIdle	 					: AnimationClip;								
-var aniPush		 					: AnimationClip;								
+var aniJump_3 						: AnimationClip;																																																			
 var aniLand		 					: AnimationClip;								
 
 var DebugMode						: boolean			= true;						
@@ -130,24 +117,19 @@ private var curTime					: float 			= 0.0;
 private var showPlayer				: boolean   		= true;						
 private var resetCharController		: boolean			= false;					
 private var objectJumpContactNormal : Vector3;										
-private var touchObjectJumpTime 	: float 			= -1.0;						
-private var wallJumpTimeout 		: float 			= 0.5;						
-private var jumpableObject			: boolean			= false;					
+private var touchObjectJumpTime 	: float 			= -1.0;						 	
 private var controllerHeightDefault : float;										
 private var controllerCenterYDefault: float;										
 private var slideDirection 			: Vector3;										
 private var collisionFlags			: CollisionFlags;								
 private var coin 					: int 				= 0;							
-private var key  					: int 				= 0;						
-private var jumpingFromPad 			: boolean 			= false;					
+private var key  					: int 				= 0;										
 private var playerStartPosition		: Vector3;										
 private var playerStartRotation		: Quaternion;									
 private var enemyHit 				: boolean;										
 private var enemyHurt				: GameObject;									
 private var resetHealth				: int;											
-private var hitDirection 			: Vector3 			= Vector3(0,10,-2.5);		
-private var pushObject				: Transform 		= null;																				
-private var grabObject				: Transform 		= null;																						
+private var hitDirection 			: Vector3 			= Vector3(0,10,-2.5);																																								
 private var tempSpeed 				: float 			= 0.0;						
 
 @script RequireComponent ( CharacterController )									
